@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechHub - Premium Gadgets Store</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-40">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <div class="text-3xl floating">📱</div>
+          <div>
+            <h1 class="text-2xl font-bold text-gray-800">TechHub</h1>
+            <p class="text-sm text-gray-600">Premium Gadgets Store</p>
+          </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="hidden md:flex flex-1 max-w-2xl mx-8">
+          <div class="relative w-full">
+            <input type="text" id="searchInput" placeholder="Search for gadgets, accessories..."
+              class="w-full px-6 py-3 pl-12 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+              onkeyup="searchProducts()">
+            <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="hidden md:flex items-center space-x-6">
+          <a href="#home" class="nav-link text-gray-700 hover:text-indigo-600 font-medium transition-colors">Home</a>
+          <a href="#products"
+            class="nav-link text-gray-700 hover:text-indigo-600 font-medium transition-colors">Products</a>
+          <a href="#about" class="nav-link text-gray-700 hover:text-indigo-600 font-medium transition-colors">About</a>
+          <a href="#blog" class="nav-link text-gray-700 hover:text-indigo-600 font-medium transition-colors">Blog</a>
+          <a href="#contact"
+            class="nav-link text-gray-700 hover:text-indigo-600 font-medium transition-colors">Contact</a>
+          <div class="relative">
+            <button onclick="toggleCart()"
+              class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full transition-colors flex items-center space-x-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5 6m0 0h9m-9 0V19a2 2 0 002 2h7a2 2 0 002-2v-4.5">
+                </path>
+              </svg>
+              <span id="cartCount">0</span>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg">
+    <div class="px-4 py-2 space-y-2">
+      <input type="text" placeholder="Search..." class="w-full px-4 py-2 border rounded-lg" onkeyup="searchProducts()">
+      <a href="#home" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Home</a>
+      <a href="#products" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Products</a>
+      <a href="#about" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">About</a>
+      <a href="#blog" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Blog</a>
+      <a href="#contact" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Contact</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="gradient-bg text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-20"></div>
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <h2 class="text-5xl md:text-6xl font-bold mb-6">
+        Discover Amazing
+        <span class="text-yellow-300">Gadgets</span>
+      </h2>
+      <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+        Premium quality tech products at unbeatable prices. Fast delivery, genuine warranty, and exceptional customer
+        service.
+      </p>
+      <a href="#products"
+        class="bg-white text-indigo-600 font-bold px-8 py-4 rounded-full text-lg hover:bg-gray-100 transition-colors shadow-lg">
+        Shop Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Categories -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">Shop by Category</h3>
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl card-hover cursor-pointer"
+          onclick="filterByCategory('Smartwatches')">
+          <div class="text-5xl mb-4 floating">⌚</div>
+          <h4 class="font-bold text-lg mb-2">Smartwatches</h4>
+          <p class="text-gray-600">Stylish & modern</p>
+        </div>
+        <div
+          class="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl card-hover cursor-pointer"
+          onclick="filterByCategory('earphones')">
+          <div class="text-5xl mb-4 floating">🎧</div>
+          <h4 class="font-bold text-lg mb-2">Earphones</h4>
+          <p class="text-gray-600">Freedom in your ears</p>
+        </div>
+        <div class="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl card-hover cursor-pointer"
+          onclick="filterByCategory('speakers')">
+          <div class="text-5xl mb-4 floating">🔊</div>
+          <h4 class="font-bold text-lg mb-2">Speakers</h4>
+          <p class="text-gray-600">Music everywhere</p>
+        </div>
+        <div class="text-center p-6 bg-gradient-to-br from-orange-50 to-red-100 rounded-2xl card-hover cursor-pointer"
+          onclick="filterByCategory('giftitem')">
+          <div class="text-5xl mb-4 floating">🎁</div>
+          <h4 class="font-bold text-lg mb-2">Gift Item</h4>
+          <p class="text-gray-600">Surprise your loved ones</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Products</h3>
+
+      <!-- Filters -->
+      <div class="mb-8">
+        <div class="flex flex-wrap gap-4 mb-6 justify-center">
+          <button onclick="filterByCategory('all')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors category-active">All</button>
+          <button onclick="filterByCategory('smartwatch')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Smartwatch</button>
+          <button onclick="filterByCategory('earphone')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Earphone</button>
+          <button onclick="filterByCategory('speaker')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Speaker</button>
+          <button onclick="filterByCategory('giftitem')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Gift
+            Item</button>
+        </div>
+
+        <div class="flex flex-wrap gap-4 items-center justify-center">
+          <select id="sortSelect" onchange="sortProducts()"
+            class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <option value="name">Sort by Name</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Rating</option>
+          </select>
+
+          <div class="flex items-center space-x-4">
+            <label class="text-gray-700">Price Range:</label>
+            <input type="range" id="priceRange" min="0" max="5000" value="5000" class="w-32" onchange="filterByPrice()">
+            <span id="priceValue" class="text-gray-700 font-medium">৳5000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="productsGrid" class="product-grid"></div>
+
+      <!-- No Results -->
+      <div id="noResults" class="hidden text-center py-16">
+        <div class="text-6xl mb-4">🔍</div>
+        <h3 class="text-2xl font-bold text-gray-800 mb-2">No products found</h3>
+        <p class="text-gray-600">Try adjusting your search or filters</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-8 text-gray-800">About TechHub</h2>
+        <p class="text-xl text-gray-600 mb-12 leading-relaxed">
+          We're passionate about bringing you the latest and greatest in technology. From cutting-edge smartphones to
+          powerful laptops, we curate only the best gadgets for tech enthusiasts like you.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+          <div class="text-center p-6">
+            <div class="text-4xl mb-4">🚚</div>
+            <h3 class="font-bold text-lg mb-2">Fast Delivery</h3>
+            <p class="text-gray-600">Quick and secure shipping worldwide</p>
+          </div>
+          <div class="text-center p-6">
+            <div class="text-4xl mb-4">🛡️</div>
+            <h3 class="font-bold text-lg mb-2">Genuine Products</h3>
+            <p class="text-gray-600">100% authentic with warranty</p>
+          </div>
+          <div class="text-center p-6">
+            <div class="text-4xl mb-4">💬</div>
+            <h3 class="font-bold text-lg mb-2">24/7 Support</h3>
+            <p class="text-gray-600">Always here to help you</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Latest Blog Posts</h2>
+
+        <div id="blogGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Blog posts will be loaded here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Contact Us</h2>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+            <div class="space-y-4">
+              <div class="flex items-center space-x-4">
+                <div class="text-2xl">📞</div>
+                <div>
+                  <p class="font-semibold">Phone</p>
+                  <p class="text-gray-600">+1 (555) 123-4567</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="text-2xl">📧</div>
+                <div>
+                  <p class="font-semibold">Email</p>
+                  <p class="text-gray-600">info@techhub.com</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="text-2xl">📍</div>
+                <div>
+                  <p class="font-semibold">Address</p>
+                  <p class="text-gray-600">123 Tech Street, Digital City</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="text-2xl">💬</div>
+                <div>
+                  <p class="font-semibold">WhatsApp</p>
+                  <p class="text-gray-600">+1 (555) 123-4567</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-8 rounded-2xl">
+            <h3 class="text-2xl font-bold mb-6">Send Message</h3>
+            <form onsubmit="handleContactForm(event)" class="space-y-4">
+              <input type="text" placeholder="Your Name"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                required>
+              <input type="email" placeholder="Your Email"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                required>
+              <textarea placeholder="Your Message" rows="5"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+                required></textarea>
+              <button type="submit"
+                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition-colors">Send
+                Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="text-2xl">📱</div>
+            <h3 class="text-xl font-bold">TechHub</h3>
+          </div>
+          <p class="text-gray-400">Premium quality tech products at unbeatable prices.</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="#products" class="hover:text-white transition-colors">Products</a></li>
+            <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Categories</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-white transition-colors">Smartphones</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Laptops</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Accessories</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Gaming</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Contact Info</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li>📞 +1 (555) 123-4567</li>
+            <li>📧 info@techhub.com</li>
+            <li>📍 123 Tech Street, Digital City</li>
+            <li>💬 WhatsApp: +1 (555) 123-4567</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; 2024 TechHub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Modal with Gallery -->
+  <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+      <div id="modalContent" class="p-8">
+        <!-- Modal content will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Sidebar -->
+  <div id="cartSidebar"
+    class="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+    <div class="p-6 border-b">
+      <div class="flex justify-between items-center">
+        <h3 class="text-xl font-bold">Shopping Cart</h3>
+        <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="cartItems" class="flex-1 overflow-y-auto p-6">
+      <!-- Cart items will be populated here -->
+    </div>
+
+    <div class="border-t p-6">
+      <div class="flex justify-between items-center mb-4">
+        <span class="text-lg font-bold">Total:</span>
+        <span id="cartTotal" class="text-xl font-bold text-indigo-600">৳0.00</span>
+      </div>
+      <button onclick="proceedToWhatsApp()"
+        class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center space-x-2">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.63" />
+        </svg>
+        <span>Continue on WhatsApp</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Cart Overlay -->
+  <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40" onclick="toggleCart()"></div>
+
+  <script>
+    // Global variables
+    let currentCategory = 'all';
+    let cart = [];
+    let currentGalleryIndex = 0;
+
+    // 🎯 PRODUCTS DATA - Add your real images here!
+    // Replace the image URLs with your actual product images
+    let products = [
+      {
+        id: 1,
+        name: "iPhone 15 Pro",
+        category: "smartphones",
+        price: 999,
+        images: [
+          "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=500&h=500&fit=crop"
+        ],
+        rating: 4.8,
+        description: "Latest iPhone with titanium design and A17 Pro chip for ultimate performance",
+        features: ["A17 Pro chip", "48MP camera system", "Titanium design", "USB-C", "Action Button"],
+        specifications: {
+          "Display": "6.1-inch Super Retina XDR",
+          "Chip": "A17 Pro",
+          "Camera": "48MP Main, 12MP Ultra Wide",
+          "Storage": "128GB, 256GB, 512GB, 1TB",
+          "Battery": "Up to 23 hours video playback"
+        },
+        inStock: true,
+        featured: true,
+        stockQuantity: 25
+      },
+      {
+        id: 2,
+        name: "MacBook Pro M3",
+        category: "laptops",
+        price: 1599,
+        images: [
+          "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=500&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&h=500&fit=crop"
+        ],
+        rating: 4.9,
+        description: "Powerful laptop with M3 chip designed for professionals and creators",
+        features: ["M3 chip", "16GB unified memory", "512GB SSD", "14-inch Liquid Retina XDR display"],
+        specifications: {
+          "Chip": "Apple M3",
+          "Memory": "16GB unified memory",
+          "Storage": "512GB SSD",
+          "Display": "14-inch Liquid Retina XDR",
+          "Battery": "Up to 18 hours"
+        },
+        inStock: true,
+        featured: true,
+        stockQuantity: 15
+      },
+      {
+        id: 3,
+        name: "AirPods Pro",
+        category: "accessories",
+        price: 249,
+        images: [
+          "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&h=500&fit=crop"
+        ],
+        rating: 4.7,
+        description: "Premium wireless earbuds with active noise cancellation",
+        features: ["Active noise cancellation", "Spatial audio", "6 hours battery", "Wireless charging case"],
+        specifications: {
+          "Chip": "H2 chip",
+          "Battery": "6 hours listening time",
+          "Charging": "Wireless charging case",
+          "Features": "Active Noise Cancellation, Transparency mode"
+        },
+        inStock: true,
+        featured: true,
+        stockQuantity: 50
+      },
+      {
+        id: 4,
+        name: "PlayStation 5",
+        category: "gaming",
+        price: 499,
+        images: [
+          "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=500&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=500&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=500&h=500&fit=crop"
+        ],
+        rating: 4.6,
+        description: "Next-generation gaming console with 4K gaming and ray tracing",
+        features: ["4K gaming", "Ray tracing", "Custom SSD", "DualSense controller", "3D Audio"],
+        specifications: {
+          "CPU": "AMD Zen 2, 8 cores",
+          "GPU": "AMD RDNA 2",
+          "Memory": "16GB GDDR6",
+          "Storage": "825GB Custom SSD",
+          "Resolution": "Up to 4K at 120fps"
+        },
+        inStock: false,
+        featured: true,
+        stockQuantity: 0
+      },
+      {
+        id: 5,
+        name: "Samsung Galaxy S24",
+        category: "smartphones",
+        price: 899,
+        images: [
+          "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&h=500&fit=crop"
+        ],
+        rating: 4.5,
+        description: "Android flagship with AI features and advanced camera system",
+        features: ["Snapdragon 8 Gen 3", "50MP camera", "AI features", "120Hz display"],
+        specifications: {
+          "Display": "6.2-inch Dynamic AMOLED 2X",
+          "Processor": "Snapdragon 8 Gen 3",
+          "Camera": "50MP + 12MP + 10MP",
+          "Memory": "8GB RAM",
+          "Storage": "128GB/256GB"
+        },
+        inStock: true,
+        featured: false,
+        stockQuantity: 30
+      },
+      {
+        id: 6,
+        name: "iPad Air",
+        category: "laptops",
+        price: 599,
+        images: [
+          "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=500&h=500&fit=crop"
+        ],
+        rating: 4.4,
+        description: "Versatile tablet perfect for work, creativity, and entertainment",
+        features: ["M1 chip", "10.9-inch display", "Apple Pencil support", "All-day battery"],
+        specifications: {
+          "Chip": "Apple M1",
+          "Display": "10.9-inch Liquid Retina",
+          "Storage": "64GB/256GB",
+          "Camera": "12MP Wide camera",
+          "Battery": "Up to 10 hours"
+        },
+        inStock: true,
+        featured: false,
+        stockQuantity: 20
+      },
+      {
+        id: 7,
+        name: "Gaming Headset Pro",
+        category: "accessories",
+        price: 199,
+        images: [
+          "https://images.unsplash.com/photo-1599669454699-248893623440?w=500&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&h=500&fit=crop"
+        ],
+        rating: 4.3,
+        description: "Professional gaming headset with surround sound and RGB lighting",
+        features: ["7.1 Surround Sound", "RGB Lighting", "Noise Cancelling Mic", "Comfortable Design"],
+        specifications: {
+          "Driver": "50mm Dynamic",
+          "Frequency": "20Hz - 20kHz",
+          "Impedance": "32 Ohm",
+          "Cable": "2m Braided Cable"
+        },
+        inStock: true,
+        featured: false,
+        stockQuantity: 40
+      },
+      {
+        id: 8,
+        name: "Gaming Keyboard RGB",
+        category: "gaming",
+        price: 149,
+        images: [
+          "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=500&h=500&fit=crop",
+          "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&h=500&fit=crop"
+        ],
+        rating: 4.2,
+        description: "Mechanical gaming keyboard with customizable RGB backlighting",
+        features: ["Mechanical Switches", "RGB Backlighting", "Anti-Ghosting", "Programmable Keys"],
+        specifications: {
+          "Switch Type": "Blue Mechanical",
+          "Layout": "Full Size (104 Keys)",
+          "Backlighting": "RGB Per-Key",
+          "Connection": "USB-C"
+        },
+        inStock: true,
+        featured: false,
+        stockQuantity: 35
+      }
+    ];
+
+    // Blog posts data
+    let blogs = [
+      {
+        id: 1,
+        title: "Top 10 Smartphones of 2024",
+        excerpt: "Discover the best smartphones that are revolutionizing the mobile industry this year.",
+        content: "The smartphone industry continues to evolve rapidly, with manufacturers pushing the boundaries of technology. From AI-powered cameras to lightning-fast processors, 2024 has brought us some incredible devices...",
+        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
+        author: "Tech Team",
+        date: new Date().toLocaleDateString(),
+        published: true
+      },
+      {
+        id: 2,
+        title: "Gaming Laptops: Performance vs Portability",
+        excerpt: "Find the perfect balance between gaming performance and portability in modern laptops.",
+        content: "Gaming laptops have come a long way in recent years, offering desktop-level performance in portable packages. But how do you choose between raw power and mobility?",
+        image: "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=400&h=300&fit=crop",
+        author: "Gaming Expert",
+        date: new Date(Date.now() - 86400000).toLocaleDateString(),
+        published: true
+      },
+      {
+        id: 3,
+        title: "The Future of Wireless Audio",
+        excerpt: "Exploring the latest innovations in wireless audio technology and what's coming next.",
+        content: "From spatial audio to advanced noise cancellation, wireless audio technology is advancing at breakneck speed. Let's explore what the future holds...",
+        image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=300&fit=crop",
+        author: "Audio Specialist",
+        date: new Date(Date.now() - 172800000).toLocaleDateString(),
+        published: true
+      }
+    ];
+
+    // Initialize the app
+    document.addEventListener('DOMContentLoaded', function () {
+      loadAllProducts();
+      loadBlogPosts();
+      updateCartUI();
+
+      // Initialize price range display
+      const priceRange = document.getElementById('priceRange');
+      if (priceRange) {
+        document.getElementById('priceValue').textContent = '৳' + priceRange.value;
+      }
+    });
+
+    // Product functions
+    function loadAllProducts() {
+      const container = document.getElementById('productsGrid');
+      const filteredProducts = filterProducts();
+
+      if (filteredProducts.length === 0) {
+        document.getElementById('noResults').classList.remove('hidden');
+        container.innerHTML = '';
+      } else {
+        document.getElementById('noResults').classList.add('hidden');
+        container.innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
+      }
+    }
+
+    function createProductCard(product) {
+      const stockBadge = product.inStock
+        ? '<span class="badge bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">In Stock</span>'
+        : '<span class="badge bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">Out of Stock</span>';
+
+      return `
+                <div class="bg-white rounded-2xl shadow-lg card-hover overflow-hidden relative">
+                    ${stockBadge}
+                    <div class="product-image-container h-48">
+                        <img src="${product.images[0]}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'; this.alt='Image not available';">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2 text-gray-800">${product.name}</h3>
+                        <p class="text-gray-600 mb-3 text-sm">${product.description}</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(${product.rating})</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold price-gradient">$${product.price}</span>
+                            <div class="space-x-2">
+                                <button onclick="viewProduct(${product.id})" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition-colors">
+                                    View
+                                </button>
+                                <button onclick="orderProduct(${product.id})" ${!product.inStock ? 'disabled' : ''} class="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg transition-colors">
+                                    ${product.inStock ? 'Order Now' : 'Out of Stock'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+    }
+
+    function viewProduct(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      currentGalleryIndex = 0;
+      const modalContent = document.getElementById('modalContent');
+      modalContent.innerHTML = `
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800">${product.name}</h2>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Image Gallery -->
+                    <div class="space-y-4">
+                        <div class="gallery-container">
+                            ${product.images.map((image, index) => `
+        < div class="gallery-slide ${index === 0 ? 'active' : ''}" >
+          <img src="${image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x400?text=Image+Not+Found'; this.alt='Image not available';">
+          </div>
+      `).join('')}
+                            
+                            ${product.images.length > 1 ? `
+        <button button button button class="gallery-nav prev" onclick = "changeGallerySlide(-1)" >‹</button >
+                                <button class="gallery-nav next" onclick="changeGallerySlide(1)">›</button>
+                                
+                                <div class="gallery-dots">
+                                    ${product.images.map((_, index) => `
+                                        <div class="gallery-dot ${index === 0 ? 'active' : ''}" onclick="goToGallerySlide(${index})"></div>
+                                    `).join('')}
+                                </div>
+      ` : ''}
+                        </div>
+                        
+                        <!-- Thumbnail Gallery -->
+                        ${product.images.length > 1 ? `
+        < div class="flex space-x-2 overflow-x-auto" >
+                                ${product.images.map((image, index) => `
+                                    <div class="flex-shrink-0 w-16 h-16 bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:bg-gray-200 transition-colors ${index === 0 ? 'ring-2 ring-indigo-500' : ''}" onclick="goToGallerySlide(${index})">
+                                        <img src="${image}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/64x64?text=?'; this.alt='Thumbnail not available';">
+                                    </div>
+                                `).join('')
+          }
+                            </div >
+        ` : ''}
+                    </div>
+                    
+                    <!-- Product Details -->
+                    <div>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold price-gradient">৳${product.price}</span>
+                            <div class="mt-2 flex items-center space-x-4">
+                                ${product.inStock
+          ? `< span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold" >✓ In Stock(${product.stockQuantity} available)</span > `
+          : '<span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">✗ Out of Stock</span>'
+        }
+                                <div class="flex text-yellow-400">
+                                    ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}
+                                    <span class="text-gray-600 ml-2">(${product.rating})</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-700 mb-6 leading-relaxed">${product.description}</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">Key Features:</h4>
+                            <ul class="space-y-2">
+                                ${product.features.map(feature => `
+        < li class="flex items-center" >
+                                        <span class="text-green-500 mr-2">✓</span>
+                                        <span class="text-gray-700">${feature}</span>
+                                    </li >
+        `).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold text-lg mb-3">Specifications:</h4>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                ${Object.entries(product.specifications).map(([key, value]) => `
+        < div class="flex justify-between py-2 border-b border-gray-200 last:border-b-0" >
+                                        <span class="font-medium text-gray-700">${key}:</span>
+                                        <span class="text-gray-600">${value}</span>
+                                    </div >
+        `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <button onclick="addToCart(${product.id})" ${!product.inStock ? 'disabled' : ''} class="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 text-white font-bold py-3 rounded-lg transition-colors">
+                                ${product.inStock ? 'Add to Cart' : 'Out of Stock'}
+                            </button>
+                            <button onclick="orderProduct(${product.id})" ${!product.inStock ? 'disabled' : ''} class="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white font-bold py-3 rounded-lg transition-colors">
+                                ${product.inStock ? 'Order Now via WhatsApp' : 'Out of Stock'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+      document.getElementById('productModal').classList.remove('hidden');
+    }
+
+    // Gallery functions
+    function changeGallerySlide(direction) {
+      const slides = document.querySelectorAll('.gallery-slide');
+      const dots = document.querySelectorAll('.gallery-dot');
+      const thumbnails = document.querySelectorAll('.gallery-container + div .flex-shrink-0');
+
+      slides[currentGalleryIndex].classList.remove('active');
+      if (dots[currentGalleryIndex]) dots[currentGalleryIndex].classList.remove('active');
+      if (thumbnails[currentGalleryIndex]) thumbnails[currentGalleryIndex].classList.remove('ring-2', 'ring-indigo-500');
+
+      currentGalleryIndex += direction;
+      if (currentGalleryIndex >= slides.length) currentGalleryIndex = 0;
+      if (currentGalleryIndex < 0) currentGalleryIndex = slides.length - 1;
+
+      slides[currentGalleryIndex].classList.add('active');
+      if (dots[currentGalleryIndex]) dots[currentGalleryIndex].classList.add('active');
+      if (thumbnails[currentGalleryIndex]) thumbnails[currentGalleryIndex].classList.add('ring-2', 'ring-indigo-500');
+    }
+
+    function goToGallerySlide(index) {
+      const slides = document.querySelectorAll('.gallery-slide');
+      const dots = document.querySelectorAll('.gallery-dot');
+      const thumbnails = document.querySelectorAll('.gallery-container + div .flex-shrink-0');
+
+      slides[currentGalleryIndex].classList.remove('active');
+      if (dots[currentGalleryIndex]) dots[currentGalleryIndex].classList.remove('active');
+      if (thumbnails[currentGalleryIndex]) thumbnails[currentGalleryIndex].classList.remove('ring-2', 'ring-indigo-500');
+
+      currentGalleryIndex = index;
+
+      slides[currentGalleryIndex].classList.add('active');
+      if (dots[currentGalleryIndex]) dots[currentGalleryIndex].classList.add('active');
+      if (thumbnails[currentGalleryIndex]) thumbnails[currentGalleryIndex].classList.add('ring-2', 'ring-indigo-500');
+    }
+
+    function closeModal() {
+      document.getElementById('productModal').classList.add('hidden');
+    }
+
+    // Filter and search functions
+    function filterByCategory(category) {
+      currentCategory = category;
+
+      // Update category buttons
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('category-active');
+      });
+      event.target.classList.add('category-active');
+
+      loadAllProducts();
+    }
+
+    function filterProducts() {
+      let filtered = products;
+
+      // Filter by category
+      if (currentCategory !== 'all') {
+        filtered = filtered.filter(p => p.category === currentCategory);
+      }
+
+      // Filter by search
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      if (searchTerm) {
+        filtered = filtered.filter(p =>
+          p.name.toLowerCase().includes(searchTerm) ||
+          p.description.toLowerCase().includes(searchTerm) ||
+          p.category.toLowerCase().includes(searchTerm)
+        );
+      }
+
+      // Filter by price
+      const maxPrice = parseInt(document.getElementById('priceRange')?.value || 5000);
+      filtered = filtered.filter(p => p.price <= maxPrice);
+
+      return filtered;
+    }
+
+    function searchProducts() {
+      loadAllProducts();
+    }
+
+    function sortProducts() {
+      const sortBy = document.getElementById('sortSelect').value;
+      const container = document.getElementById('productsGrid');
+      let sortedProducts = [...filterProducts()];
+
+      switch (sortBy) {
+        case 'name':
+          sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+        case 'price-low':
+          sortedProducts.sort((a, b) => a.price - b.price);
+          break;
+        case 'price-high':
+          sortedProducts.sort((a, b) => b.price - a.price);
+          break;
+        case 'rating':
+          sortedProducts.sort((a, b) => b.rating - a.rating);
+          break;
+      }
+
+      container.innerHTML = sortedProducts.map(product => createProductCard(product)).join('');
+    }
+
+    function filterByPrice() {
+      const priceValue = document.getElementById('priceRange').value;
+      document.getElementById('priceValue').textContent = '৳' + priceValue;
+      loadAllProducts();
+    }
+
+    // Blog functions
+    function loadBlogPosts() {
+      const container = document.getElementById('blogGrid');
+      const publishedBlogs = blogs.filter(blog => blog.published);
+
+      container.innerHTML = publishedBlogs.map(blog => createBlogCard(blog)).join('');
+    }
+
+    function createBlogCard(blog) {
+      return `
+                <div class="bg-white rounded-2xl shadow-lg card-hover overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="${blog.image}" alt="${blog.title}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Blog+Image'; this.alt='Blog image not available';">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">${blog.title}</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed">${blog.excerpt}</p>
+                        <div class="flex justify-between items-center text-sm text-gray-500 mb-4">
+                            <span>By ${blog.author}</span>
+                            <span>${blog.date}</span>
+                        </div>
+                        <button onclick="viewBlogPost(${blog.id})" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-lg transition-colors">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            `;
+    }
+
+    function viewBlogPost(blogId) {
+      const blog = blogs.find(b => b.id === blogId);
+      if (!blog) return;
+
+      alert(`${blog.title}\n\nBy ${blog.author} - ${blog.date}\n\n${blog.content}`);
+    }
+
+    // Cart functions
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product || !product.inStock) return;
+
+      const existingItem = cart.find(item => item.id === productId);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      updateCartUI();
+      showCartNotification(product.name + ' added to cart!');
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      updateCartUI();
+    }
+
+    function updateQuantity(productId, change) {
+      const item = cart.find(item => item.id === productId);
+      if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+          removeFromCart(productId);
+        } else {
+          updateCartUI();
+        }
+      }
+    }
+
+    function updateCartUI() {
+      const cartCount = document.getElementById('cartCount');
+      const cartItems = document.getElementById('cartItems');
+      const cartTotal = document.getElementById('cartTotal');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+      cartCount.textContent = totalItems;
+      cartTotal.textContent = '৳' + totalPrice.toFixed(2);
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = `
+                    <div class="text-center py-8">
+                        <div class="text-4xl mb-4">🛒</div>
+                        <p class="text-gray-600">Your cart is empty</p>
+                    </div>
+                `;
+      } else {
+        cartItems.innerHTML = cart.map(item => `
+                    <div class="flex items-center space-x-4 mb-4 p-4 bg-gray-50 rounded-lg">
+                        <img src="${item.images[0]}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg" onerror="this.src='https://via.placeholder.com/64x64?text=?'; this.alt='Product image not available';">
+                        <div class="flex-1">
+                            <h4 class="font-semibold">${item.name}</h4>
+                            <p class="text-gray-600">$${item.price}</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="bg-gray-200 hover:bg-gray-300 w-8 h-8 rounded-full flex items-center justify-center">-</button>
+                            <span class="w-8 text-center">${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="bg-gray-200 hover:bg-gray-300 w-8 h-8 rounded-full flex items-center justify-center">+</button>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                `).join('');
+      }
+    }
+
+    function toggleCart() {
+      const sidebar = document.getElementById('cartSidebar');
+      const overlay = document.getElementById('cartOverlay');
+
+      if (sidebar.classList.contains('translate-x-full')) {
+        sidebar.classList.remove('translate-x-full');
+        overlay.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+      }
+    }
+
+    function showCartNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 fade-in';
+      notification.textContent = message;
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.remove();
+      }, 3000);
+    }
+
+    // WhatsApp integration
+    function proceedToWhatsApp() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+
+      const orderDetails = cart.map(item =>
+        `${item.name} - Quantity: ${item.quantity} - Price: ৳${item.price * item.quantity}`
+      ).join('\n');
+
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+      const message = `Hello! I'd like to place an order:\n\n${orderDetails}\n\nTotal: ৳${total.toFixed(2)}\n\nPlease confirm availability and provide payment details.`;
+
+      const whatsappNumber = "1234567890"; // 🔥 Replace with your WhatsApp number
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappUrl, '_blank');
+    }
+
+    function orderProduct(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product || !product.inStock) return;
+
+      const message = `Hello! I'd like to order:\n\n${product.name} - ৳${product.price}\n\nPlease confirm availability and provide payment details.`;
+
+      const whatsappNumber = "1234567890"; // 🔥 Replace with your WhatsApp number
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+
+    // Contact form handler
+    function handleContactForm(event) {
+      event.preventDefault();
+      showCartNotification('Thank you for your message! We will get back to you soon.');
+      event.target.reset();
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+        // Close mobile menu if open
+        document.getElementById('mobileMenu').classList.add('hidden');
+      });
+    });
+  </script>
+  <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9751bcb6906ae87e',t:'MTc1NjE5NDYxNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
