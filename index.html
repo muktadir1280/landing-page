@@ -106,29 +106,29 @@
       <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">Shop by Category</h3>
       <div class="grid md:grid-cols-4 gap-8">
         <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl card-hover cursor-pointer"
-          onclick="filterByCategory('Smartwatches')">
-          <div class="text-5xl mb-4 floating">⌚</div>
-          <h4 class="font-bold text-lg mb-2">Smartwatches</h4>
-          <p class="text-gray-600">Stylish & modern</p>
+          onclick="filterByCategory('smartphones')">
+          <div class="text-5xl mb-4 floating">📱</div>
+          <h4 class="font-bold text-lg mb-2">Smartphones</h4>
+          <p class="text-gray-600">Latest models</p>
         </div>
         <div
           class="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl card-hover cursor-pointer"
-          onclick="filterByCategory('earphones')">
-          <div class="text-5xl mb-4 floating">🎧</div>
-          <h4 class="font-bold text-lg mb-2">Earphones</h4>
-          <p class="text-gray-600">Freedom in your ears</p>
+          onclick="filterByCategory('laptops')">
+          <div class="text-5xl mb-4 floating">💻</div>
+          <h4 class="font-bold text-lg mb-2">Laptops</h4>
+          <p class="text-gray-600">High performance</p>
         </div>
         <div class="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl card-hover cursor-pointer"
-          onclick="filterByCategory('speakers')">
-          <div class="text-5xl mb-4 floating">🔊</div>
-          <h4 class="font-bold text-lg mb-2">Speakers</h4>
-          <p class="text-gray-600">Music everywhere</p>
+          onclick="filterByCategory('accessories')">
+          <div class="text-5xl mb-4 floating">🎧</div>
+          <h4 class="font-bold text-lg mb-2">Accessories</h4>
+          <p class="text-gray-600">Premium quality</p>
         </div>
         <div class="text-center p-6 bg-gradient-to-br from-orange-50 to-red-100 rounded-2xl card-hover cursor-pointer"
-          onclick="filterByCategory('giftitem')">
-          <div class="text-5xl mb-4 floating">🎁</div>
-          <h4 class="font-bold text-lg mb-2">Gift Item</h4>
-          <p class="text-gray-600">Surprise your loved ones</p>
+          onclick="filterByCategory('gaming')">
+          <div class="text-5xl mb-4 floating">🎮</div>
+          <h4 class="font-bold text-lg mb-2">Gaming</h4>
+          <p class="text-gray-600">Pro gaming gear</p>
         </div>
       </div>
     </div>
@@ -144,15 +144,14 @@
         <div class="flex flex-wrap gap-4 mb-6 justify-center">
           <button onclick="filterByCategory('all')"
             class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors category-active">All</button>
-          <button onclick="filterByCategory('smartwatch')"
-            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Smartwatch</button>
-          <button onclick="filterByCategory('earphone')"
-            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Earphone</button>
-          <button onclick="filterByCategory('speaker')"
-            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Speaker</button>
-          <button onclick="filterByCategory('giftitem')"
-            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Gift
-            Item</button>
+          <button onclick="filterByCategory('smartphones')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Smartphones</button>
+          <button onclick="filterByCategory('laptops')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Laptops</button>
+          <button onclick="filterByCategory('accessories')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Accessories</button>
+          <button onclick="filterByCategory('gaming')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Gaming</button>
         </div>
 
         <div class="flex flex-wrap gap-4 items-center justify-center">
@@ -167,7 +166,7 @@
           <div class="flex items-center space-x-4">
             <label class="text-gray-700">Price Range:</label>
             <input type="range" id="priceRange" min="0" max="5000" value="5000" class="w-32" onchange="filterByPrice()">
-            <span id="priceValue" class="text-gray-700 font-medium">৳5000</span>
+            <span id="priceValue" class="text-gray-700 font-medium">$5000</span>
           </div>
         </div>
       </div>
@@ -370,7 +369,7 @@
     <div class="border-t p-6">
       <div class="flex justify-between items-center mb-4">
         <span class="text-lg font-bold">Total:</span>
-        <span id="cartTotal" class="text-xl font-bold text-indigo-600">৳0.00</span>
+        <span id="cartTotal" class="text-xl font-bold text-indigo-600">$0.00</span>
       </div>
       <button onclick="proceedToWhatsApp()"
         class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center space-x-2">
@@ -625,7 +624,7 @@
       // Initialize price range display
       const priceRange = document.getElementById('priceRange');
       if (priceRange) {
-        document.getElementById('priceValue').textContent = '৳' + priceRange.value;
+        document.getElementById('priceValue').textContent = '$' + priceRange.value;
       }
     });
 
@@ -664,7 +663,7 @@
                             <span class="text-gray-600 text-sm ml-2">(${product.rating})</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold price-gradient">৳${product.price}</span>
+                            <span class="text-2xl font-bold price-gradient">$${product.price}</span>
                             <div class="space-x-2">
                                 <button onclick="viewProduct(${product.id})" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition-colors">
                                     View
@@ -696,13 +695,13 @@
                     <div class="space-y-4">
                         <div class="gallery-container">
                             ${product.images.map((image, index) => `
-        < div class="gallery-slide ${index === 0 ? 'active' : ''}" >
-          <img src="${image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x400?text=Image+Not+Found'; this.alt='Image not available';">
-          </div>
-      `).join('')}
+                                <div class="gallery-slide ${index === 0 ? 'active' : ''}">
+                                    <img src="${image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x400?text=Image+Not+Found'; this.alt='Image not available';">
+                                </div>
+                            `).join('')}
                             
                             ${product.images.length > 1 ? `
-        <button button button button class="gallery-nav prev" onclick = "changeGallerySlide(-1)" >‹</button >
+                                <button class="gallery-nav prev" onclick="changeGallerySlide(-1)">‹</button>
                                 <button class="gallery-nav next" onclick="changeGallerySlide(1)">›</button>
                                 
                                 <div class="gallery-dots">
@@ -710,29 +709,28 @@
                                         <div class="gallery-dot ${index === 0 ? 'active' : ''}" onclick="goToGallerySlide(${index})"></div>
                                     `).join('')}
                                 </div>
-      ` : ''}
+                            ` : ''}
                         </div>
                         
                         <!-- Thumbnail Gallery -->
                         ${product.images.length > 1 ? `
-        < div class="flex space-x-2 overflow-x-auto" >
+                            <div class="flex space-x-2 overflow-x-auto">
                                 ${product.images.map((image, index) => `
                                     <div class="flex-shrink-0 w-16 h-16 bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:bg-gray-200 transition-colors ${index === 0 ? 'ring-2 ring-indigo-500' : ''}" onclick="goToGallerySlide(${index})">
                                         <img src="${image}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/64x64?text=?'; this.alt='Thumbnail not available';">
                                     </div>
-                                `).join('')
-          }
-                            </div >
-        ` : ''}
+                                `).join('')}
+                            </div>
+                        ` : ''}
                     </div>
                     
                     <!-- Product Details -->
                     <div>
                         <div class="mb-6">
-                            <span class="text-4xl font-bold price-gradient">৳${product.price}</span>
+                            <span class="text-4xl font-bold price-gradient">$${product.price}</span>
                             <div class="mt-2 flex items-center space-x-4">
                                 ${product.inStock
-          ? `< span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold" >✓ In Stock(${product.stockQuantity} available)</span > `
+          ? `<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">✓ In Stock (${product.stockQuantity} available)</span>`
           : '<span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">✗ Out of Stock</span>'
         }
                                 <div class="flex text-yellow-400">
@@ -748,11 +746,11 @@
                             <h4 class="font-bold text-lg mb-3">Key Features:</h4>
                             <ul class="space-y-2">
                                 ${product.features.map(feature => `
-        < li class="flex items-center" >
+                                    <li class="flex items-center">
                                         <span class="text-green-500 mr-2">✓</span>
                                         <span class="text-gray-700">${feature}</span>
-                                    </li >
-        `).join('')}
+                                    </li>
+                                `).join('')}
                             </ul>
                         </div>
                         
@@ -760,11 +758,11 @@
                             <h4 class="font-bold text-lg mb-3">Specifications:</h4>
                             <div class="bg-gray-50 rounded-lg p-4">
                                 ${Object.entries(product.specifications).map(([key, value]) => `
-        < div class="flex justify-between py-2 border-b border-gray-200 last:border-b-0" >
+                                    <div class="flex justify-between py-2 border-b border-gray-200 last:border-b-0">
                                         <span class="font-medium text-gray-700">${key}:</span>
                                         <span class="text-gray-600">${value}</span>
-                                    </div >
-        `).join('')}
+                                    </div>
+                                `).join('')}
                             </div>
                         </div>
                         
@@ -889,7 +887,7 @@
 
     function filterByPrice() {
       const priceValue = document.getElementById('priceRange').value;
-      document.getElementById('priceValue').textContent = '৳' + priceValue;
+      document.getElementById('priceValue').textContent = '$' + priceValue;
       loadAllProducts();
     }
 
@@ -971,7 +969,7 @@
       const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
       cartCount.textContent = totalItems;
-      cartTotal.textContent = '৳' + totalPrice.toFixed(2);
+      cartTotal.textContent = '$' + totalPrice.toFixed(2);
 
       if (cart.length === 0) {
         cartItems.innerHTML = `
@@ -1035,12 +1033,12 @@
       }
 
       const orderDetails = cart.map(item =>
-        `${item.name} - Quantity: ${item.quantity} - Price: ৳${item.price * item.quantity}`
+        `${item.name} - Quantity: ${item.quantity} - Price: $${item.price * item.quantity}`
       ).join('\n');
 
       const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-      const message = `Hello! I'd like to place an order:\n\n${orderDetails}\n\nTotal: ৳${total.toFixed(2)}\n\nPlease confirm availability and provide payment details.`;
+      const message = `Hello! I'd like to place an order:\n\n${orderDetails}\n\nTotal: $${total.toFixed(2)}\n\nPlease confirm availability and provide payment details.`;
 
       const whatsappNumber = "1234567890"; // 🔥 Replace with your WhatsApp number
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -1052,7 +1050,7 @@
       const product = products.find(p => p.id === productId);
       if (!product || !product.inStock) return;
 
-      const message = `Hello! I'd like to order:\n\n${product.name} - ৳${product.price}\n\nPlease confirm availability and provide payment details.`;
+      const message = `Hello! I'd like to order:\n\n${product.name} - $${product.price}\n\nPlease confirm availability and provide payment details.`;
 
       const whatsappNumber = "1234567890"; // 🔥 Replace with your WhatsApp number
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -1088,7 +1086,7 @@
       });
     });
   </script>
-  <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9751bcb6906ae87e',t:'MTc1NjE5NDYxNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+  <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'976a009621d9ba5c',t:'MTc1NjQ0OTA1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
 
 </html>
