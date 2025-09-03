@@ -106,29 +106,29 @@
       <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">Shop by Category</h3>
       <div class="grid md:grid-cols-4 gap-8">
         <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl card-hover cursor-pointer"
-          onclick="filterByCategory('smartphones')">
-          <div class="text-5xl mb-4 floating">📱</div>
-          <h4 class="font-bold text-lg mb-2">Smartphones</h4>
-          <p class="text-gray-600">Latest models</p>
+          onclick="filterByCategory('smartwatch')">
+          <div class="text-5xl mb-4 floating">⌚</div>
+          <h4 class="font-bold text-lg mb-2">Smartwatch</h4>
+          <p class="text-gray-600">Smart look, smart life!</p>
         </div>
         <div
           class="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl card-hover cursor-pointer"
-          onclick="filterByCategory('laptops')">
-          <div class="text-5xl mb-4 floating">💻</div>
-          <h4 class="font-bold text-lg mb-2">Laptops</h4>
-          <p class="text-gray-600">High performance</p>
+          onclick="filterByCategory('earphones')">
+          <div class="text-5xl mb-4 floating">🎧</div>
+          <h4 class="font-bold text-lg mb-2">Earphones</h4>
+          <p class="text-gray-600">Feel the beat, live the vibe!</p>
         </div>
         <div class="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl card-hover cursor-pointer"
-          onclick="filterByCategory('accessories')">
-          <div class="text-5xl mb-4 floating">🎧</div>
-          <h4 class="font-bold text-lg mb-2">Accessories</h4>
-          <p class="text-gray-600">Premium quality</p>
+          onclick="filterByCategory('speaker')">
+          <div class="text-5xl mb-4 floating">🔊</div>
+          <h4 class="font-bold text-lg mb-2">Speaker</h4>
+          <p class="text-gray-600">Louder. Clearer. Better.</p>
         </div>
         <div class="text-center p-6 bg-gradient-to-br from-orange-50 to-red-100 rounded-2xl card-hover cursor-pointer"
-          onclick="filterByCategory('gaming')">
-          <div class="text-5xl mb-4 floating">🎮</div>
-          <h4 class="font-bold text-lg mb-2">Gaming</h4>
-          <p class="text-gray-600">Pro gaming gear</p>
+          onclick="filterByCategory('giftitem')">
+          <div class="text-5xl mb-4 floating">🎁</div>
+          <h4 class="font-bold text-lg mb-2">Gift Item</h4>
+          <p class="text-gray-600">Gifts that speak love.</p>
         </div>
       </div>
     </div>
@@ -144,14 +144,15 @@
         <div class="flex flex-wrap gap-4 mb-6 justify-center">
           <button onclick="filterByCategory('all')"
             class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors category-active">All</button>
-          <button onclick="filterByCategory('smartphones')"
-            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Smartphones</button>
-          <button onclick="filterByCategory('laptops')"
-            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Laptops</button>
-          <button onclick="filterByCategory('accessories')"
-            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Accessories</button>
-          <button onclick="filterByCategory('gaming')"
-            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Gaming</button>
+          <button onclick="filterByCategory('smartwatch')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Smartwatch</button>
+          <button onclick="filterByCategory('earphones')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Earphones</button>
+          <button onclick="filterByCategory('speaker')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Speaker</button>
+          <button onclick="filterByCategory('giftitem')"
+            class="category-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Gift
+            Item</button>
         </div>
 
         <div class="flex flex-wrap gap-4 items-center justify-center">
@@ -166,7 +167,7 @@
           <div class="flex items-center space-x-4">
             <label class="text-gray-700">Price Range:</label>
             <input type="range" id="priceRange" min="0" max="5000" value="5000" class="w-32" onchange="filterByPrice()">
-            <span id="priceValue" class="text-gray-700 font-medium">$5000</span>
+            <span id="priceValue" class="text-gray-700 font-medium">৳5000</span>
           </div>
         </div>
       </div>
@@ -369,7 +370,7 @@
     <div class="border-t p-6">
       <div class="flex justify-between items-center mb-4">
         <span class="text-lg font-bold">Total:</span>
-        <span id="cartTotal" class="text-xl font-bold text-indigo-600">$0.00</span>
+        <span id="cartTotal" class="text-xl font-bold text-indigo-600">৳0.00</span>
       </div>
       <button onclick="proceedToWhatsApp()"
         class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center space-x-2">
@@ -624,7 +625,7 @@
       // Initialize price range display
       const priceRange = document.getElementById('priceRange');
       if (priceRange) {
-        document.getElementById('priceValue').textContent = '$' + priceRange.value;
+        document.getElementById('priceValue').textContent = '৳' + priceRange.value;
       }
     });
 
@@ -663,7 +664,7 @@
                             <span class="text-gray-600 text-sm ml-2">(${product.rating})</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold price-gradient">$${product.price}</span>
+                            <span class="text-2xl font-bold price-gradient">৳${product.price}</span>
                             <div class="space-x-2">
                                 <button onclick="viewProduct(${product.id})" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition-colors">
                                     View
@@ -727,7 +728,7 @@
                     <!-- Product Details -->
                     <div>
                         <div class="mb-6">
-                            <span class="text-4xl font-bold price-gradient">$${product.price}</span>
+                            <span class="text-4xl font-bold price-gradient">৳${product.price}</span>
                             <div class="mt-2 flex items-center space-x-4">
                                 ${product.inStock
           ? `<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">✓ In Stock (${product.stockQuantity} available)</span>`
@@ -887,7 +888,7 @@
 
     function filterByPrice() {
       const priceValue = document.getElementById('priceRange').value;
-      document.getElementById('priceValue').textContent = '$' + priceValue;
+      document.getElementById('priceValue').textContent = '৳' + priceValue;
       loadAllProducts();
     }
 
@@ -969,7 +970,7 @@
       const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
       cartCount.textContent = totalItems;
-      cartTotal.textContent = '$' + totalPrice.toFixed(2);
+      cartTotal.textContent = '৳' + totalPrice.toFixed(2);
 
       if (cart.length === 0) {
         cartItems.innerHTML = `
@@ -984,7 +985,7 @@
                         <img src="${item.images[0]}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg" onerror="this.src='https://via.placeholder.com/64x64?text=?'; this.alt='Product image not available';">
                         <div class="flex-1">
                             <h4 class="font-semibold">${item.name}</h4>
-                            <p class="text-gray-600">$${item.price}</p>
+                            <p class="text-gray-600">৳${item.price}</p>
                         </div>
                         <div class="flex items-center space-x-2">
                             <button onclick="updateQuantity(${item.id}, -1)" class="bg-gray-200 hover:bg-gray-300 w-8 h-8 rounded-full flex items-center justify-center">-</button>
@@ -1033,12 +1034,12 @@
       }
 
       const orderDetails = cart.map(item =>
-        `${item.name} - Quantity: ${item.quantity} - Price: $${item.price * item.quantity}`
+        `${item.name} - Quantity: ${item.quantity} - Price: ৳${item.price * item.quantity}`
       ).join('\n');
 
       const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-      const message = `Hello! I'd like to place an order:\n\n${orderDetails}\n\nTotal: $${total.toFixed(2)}\n\nPlease confirm availability and provide payment details.`;
+      const message = `Hello! I'd like to place an order:\n\n${orderDetails}\n\nTotal: ৳${total.toFixed(2)}\n\nPlease confirm availability and provide payment details.`;
 
       const whatsappNumber = "1234567890"; // 🔥 Replace with your WhatsApp number
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -1050,7 +1051,7 @@
       const product = products.find(p => p.id === productId);
       if (!product || !product.inStock) return;
 
-      const message = `Hello! I'd like to order:\n\n${product.name} - $${product.price}\n\nPlease confirm availability and provide payment details.`;
+      const message = `Hello! I'd like to order:\n\n${product.name} - ৳${product.price}\n\nPlease confirm availability and provide payment details.`;
 
       const whatsappNumber = "1234567890"; // 🔥 Replace with your WhatsApp number
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
